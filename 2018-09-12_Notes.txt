@@ -1,0 +1,91 @@
+Powerpoint<</PPT
+
+#IoT
+
+Internet of Things. Either devices or other "things" that are connected in some
+way, not necessarily through standard computer interfaces.
+
+Increasingly many services are available through the internet.
+ - VoIP
+ - IM Chat
+ - Location data. Especially through:
+	* Social media
+	* Images which tag GPS location
+	* Phones and fitness apps outfitted with GPS data
+ - Collaboration
+
+Impetus for the development of IoT
+ - IP-based networking
+ - Connectivity
+ - Smaller/faster computers
+ - Cloud computing
+ - Data analytics
+
+Store-and-Forward vs Real-Time
+ - Real-time: Occurs instantaneously
+ - Store-and-Forward: Acceptable delay in transmitting communication
+	* Fitbit used to be connected to a computer directly through USB,
+	  rather than being networked.
+
+IoT's impact on humans
+ - Health monitoring and updating
+ - Home security and smart homes
+ - Online family member calendars
+ - Near real-time tracking and monitoriing via GPS
+ - Online banking, bill paying, and financial transaciton
+ - Online e-commerce purchases
+
+IoT's impact on business
+ - Retail stores
+ - Virtual workplace
+ - Remote sensors
+ - Traffic-monitoring
+ - B2C service delivery model
+ - "Anything as a Service" IoT applications
+
+###Evolution of Brick and Mortar to E-Commerce
+ - E-Commerce: Sale of goods and services on the internet
+ - Business to Consumer (B2C): Customers purchase goods and services directly
+   from the website
+ - Business to Business (B2B): Businesses conduct sales with other businesses
+ - Payment Card Industry Data Security Standard (PCI DSS): Protects private
+   customer data
+
+Internet business challenges
+ - Growing the business through the internet
+ - Changing an existing conventional business into an e-business
+ - Building secure and highly available websites and e-commerce portals
+ - Building a web-enabled customer-service strategy
+ - Finding new customers with internet marketing
+
+###BYOD (Bring Your Own Device) policy
+ - Employees and contractors using their own personal devices to connect to
+   network at office.
+
+Presents issues of:
+ - Networking
+ - Usability
+ - Security
+
+Security challenges of IT devices
+ - Deployed in large quantities
+ - Ubiquitous and can have wide reach into the user or household population
+ - Not maintained or updated devices present vulnerabilities.
+ - Upgrades can be difficult to distribute and deploy
+ - No owner visibility of how the device connects to the internet
+ - Not physically secure
+ - Capture readings and measurements in the open
+
+Privacy Challenges
+ - Privacy policy statement
+ - Definition of data, metadata, or analytical data use and rights
+ - Ability for a user to provide consent to a manufacturer's or application
+   service provider's privacy policy statement
+ - Determining the domain of privacy
+
+/PPT
+
+Bruce Schneier. Security professional with a blog.
+
+Pivoting: A technique/strategy by which one uses a compromised device to
+leverage on the rest of the network.
