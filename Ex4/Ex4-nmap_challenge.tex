@@ -1,0 +1,95 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\usepackage{graphicx}
+
+\title{Exercise 4 -- Nmap challenge}
+\author{Stewart Johnston\\
+  {CIS 127 -- Intro to Information Security}\\
+  {NCMC}\\
+  {\texttt{johnstons1@student.ncmich.edu}}
+}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Capture 1}
+\begin{enumerate}
+	\item {\em Most likely scan}: Host discovery scan
+	\item {\em Exact syntax of the command}: \verb|nmap -PE -PS443 -PA80 -PP 10.10.10.0/24|
+	\item {\em Result of scan}: Shows three other hosts active on that
+			subnet, but with filtered ports.
+		\item {\em Machine vendors}: Cisco, AMD, Raspberry-Pi
+		\item {\em MAC address of the machine running nmap}: AmdPcnet\_af:14:cb
+		\item {\em IPv4 address of machine running nmap}: 10.10.10.5
+		\item {\em IPv6 address of the machine running nmap}: fe80::c14:ca44:6c33:171
+		\item {\em MAC addresses of devices on network}:
+		\begin{enumerate}
+			\item 10.10.10.5 -- AmdPcnet\_af:14:cb
+			\item 10.10.10.1 -- Cisco\_2f:b1:dc
+			\item 10.10.10.4 -- AmdPcnet\_94:98:0b
+			\item 10.10.10.6 -- Raspberr\_1a:17:61
+		\end{enumerate}
+\end{enumerate}
+
+\section{Capture 2 -- OS scan}
+\begin{enumerate}
+	\item {\em Exact syntax of the command}: nmap -sV -O 10.10.10.6
+	\item {\em Why are there packets from hosts other than the scanner and
+		scanee}? 10.10.10.4 is sending multicast UDP signals, about
+		every second, which may be a keepalive signal to a phone.
+	\item {\em What services are responding}? 10.10.10.6 responds on SSH, for port 22
+	\item {\em What packet numbers are checking telnet}? Packet number 23 sends a SYN on port 23, and packet number 24.
+\end{enumerate}
+
+\section{Capture 3}
+\begin{enumerate}
+	\item {\em Type of scan}: Full-connect TCP scan along top 973 ports with
+		some retries and no ping. What's notable about this is that it isn't a
+		stealthy scan, because it completes the three-way-handshake
+		before resetting, which is an event deemed worthy of logging by
+		most systems. It's also the only kind of scan available if you
+		don't have elevated permissions, because it uses the OS'
+		underlying systemcalls to operate, and therefore behaves the
+		legal way that OSs are expected to behave.
+	\item {\em Major clue to type of scan}: All rst packets sent by the attacker
+		were first preceeded by a full three-way-handshake, of syn,
+		syn/ack, ack. There are a number of retransmissions, about half
+		a second after the prior attempt to send the packet. I can only
+		assume that some attenuation occured on the line, or for some
+		other reason the attacker was not receiving the responses
+		before sending a retransmission. By a little scripting I've
+		determined that the maximum number of retries seen in the
+		packet capture file is 2, so I will also assume that is the
+		case for the actual command being used. As for no ping, well, there are no ICMP from the attacker.
+	\item {\em Exact Syntax}: \verb| nmap -sT -Pn --max-retries 2 --top-ports 973 10.10.10.4 |
+	\item {\em What ports are listening on the victim}:
+		\begin{enumerate}
+			\item Port 139: netbios-ssn
+			\item Port 135: epmap
+			\item Port 25: SMTP
+			\item Port 443: HTTPS
+			\item Port 445: microsoft-ds
+			\item Port 1119: bnetgame
+			\item Port 99: metagram
+			\item Port 990: ftps
+		\end{enumerate}
+\end{enumerate}
+
+\section{Capture 4}
+\begin{enumerate}
+	\item {\em Most likely type of scan}: No ping, along the top 945 ports, looks like a SYN scan,
+		but no rst packets are sent resulting in several
+		retransmissions from the victims.
+	\item {\em Major clue to type of scan}:
+	\item {\em Exact syntax}:
+	\item {\em What common service and port number is
+		active on 2 of the devices, and which are
+		the two}? HTTPS on port 443 is active/open
+		at 10.10.10.1 and 10.10.10.4; SSH on port
+		22 is active/opent at 10.10.10.1 and
+		10.10.10.2
+\end{enumerate}
+
+\end{document}
