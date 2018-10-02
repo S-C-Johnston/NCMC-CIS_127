@@ -79,17 +79,63 @@
 
 \section{Capture 4}
 \begin{enumerate}
-	\item {\em Most likely type of scan}: No ping, along the top 945 ports, looks like a SYN scan,
-		but no rst packets are sent resulting in several
-		retransmissions from the victims.
-	\item {\em Major clue to type of scan}:
-	\item {\em Exact syntax}:
+	\item {\em Most likely type of scan}: No ping, along the top 945 ports,
+		looks like a SYN scan, but no rst packets are sent resulting in
+		several retransmissions from the victims. 
+	\item {\em Major clue to type of scan}: The only packets sent by the
+		attacker were SYN packets (excepting the ARP packets sent by
+		the hardware addresss by default), which were at no point
+		retransmitted. The only way I can see for such a result is with
+		an iptable or other filter which prevents the host OS of the
+		attacker from responding with rst packets.
+	\item {\em Exact syntax}: \verb|nmap -sS -Pn --max-retries 0 --top-ports 945 10.10.10.1,4,6|
 	\item {\em What common service and port number is
 		active on 2 of the devices, and which are
 		the two}? HTTPS on port 443 is active/open
 		at 10.10.10.1 and 10.10.10.4; SSH on port
 		22 is active/opent at 10.10.10.1 and
 		10.10.10.2
+\end{enumerate}
+
+\section{Capture 5 -- version scan}
+\begin{enumerate}
+	\item {\em Exact syntax}: \verb|nmap -sV -Pn 10.10.10.4|
+	\item {\em What services are running on the internet facing target}?
+		It's pretty clear that the target is a frankenstein of a
+		server, hosting web, files, mail, and potentially Directory
+		Controller duties. Per wireshark:
+		\begin{enumerate}
+			\item Port 135: epmap (end-point mapper)
+			\item Port 25: smtp (mail transfer protocol)
+			\item Port 445: microsoft-ds (directory services)
+			\item Port 139: netbios-ssn (provides netbios api over
+				TCP)
+			\item Port 443: https (hypertext -- secure)
+			\item Port 990: ftps (file transfer -- secure)
+			\item Port 1119: bnetgame (battlenet, used for Blizzard entertainment titles)
+			\item Port 99: metagram ?? Shockingly difficult to find what this really is.
+		\end{enumerate}
+	\item {\em OS of the target}: Windows NT of some variety, I think.
+	\item {\em Protocol which shows the OS of the target}: microsoft-ds and
+		netbios-ssn kind of give it away. epmap carried some packets
+		which made clear that it was Microsoft and Samba. Similarly
+		metagram outright stated that it was Microsoft-IIS/5.1 during
+		an HTTP 400 err. SMTP carried a conversation to the effect that
+		it was Microsoft ESMTP MAIL Service, and so on. I don't doubt
+		that if you run them in an emulation layer, several of these
+		things could be run on a *nix OS, but\dots why bother with
+		that?
+	\item {\em Target hostname}: DHSCTE.local
+	\item {\em Protocol which shows the hostname of the target}: At least
+		one call to Multicast-DNS shows the hostname, along with
+		netbios, and some of the various other packets reply with the
+		hostname.
+	\item {\em Hostname of the attacker}: CTE-tablet
+	\item {\em Service which shows the hostname of the attacker}:
+		netbios-dgm, a datagram service running on UDP. This is
+		apparently on behalf of the Browser service, which runs on
+		MailSlot/SMB. Announcing MailSlot/SMB workgroup etc was a part
+		of the packet containing the attacker's name.
 \end{enumerate}
 
 \end{document}
