@@ -82,4 +82,27 @@
 	and a reminder of the importance of checking certificates for important
 	sites.
 
+\subsection{Poisoning the Cache}
+	Dumping poison in the watering hole, here meaning the DNS server's
+	cache, is very similar to the MitM attack in several ways, but with the
+	following distinctions:
+	\begin{itemize}
+		\item The DNS server must be someplace such the attacker can
+			insert their response between the local server and
+			other name servers on the internet. It follows that
+			this attack may work quite well against an organization
+			with the technical chutzpah to host their own DNS
+			server, and it would be a rather pointless endeavor in
+			nearly any other situation.
+		\item The response only need be spoofed {\em once} for any
+			given domain, as long as the cache keeps the spoofed
+			response. This may be minutes, hours, or days. This has
+			an obvious benefit over needing to keep constant watch
+			for requests.
+		\item Authority and other domains can also be targeted. An
+			attacker can point the DNS server to their own
+			nameserver elsewhere for the duration that the cache
+			keeps that record.
+	\end{itemize}
+
 \end{document}
