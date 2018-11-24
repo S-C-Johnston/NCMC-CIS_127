@@ -18,6 +18,36 @@
 
 \section{Domain Name System}
 DNS is a complicated procedure, much of which is outside the scope of this
-report. 
+report. The basic principle is as such:
+
+\begin{enumerate}
+	\item Numbers are hard for people to remember, by comparison with
+		distinct names. DNS servers store the relationship between IP
+		addresses and registered domain names.
+	\item Every machine needs to retrieve the IP address from a
+		DNS server for a domain name when the relationship is not
+		already known.
+	\item Many home users rely on their gateway (modem/router) to point
+		them to a DNS server, which is often provided by the Internet
+		Service Provider. Many organizations host their own DNS servers
+		which perform the decentralized workings themselves, so as not
+		to rely on outside resources which can't be controlled. They
+		may also make this server the authoritative DNS server for
+		their domain, and make it internet facing.
+	\item DNS servers don't retrieve the information fresh from other
+		servers every time they need to serve requests; that would be
+		monumentally noisy and slow. Instead, they cache results for
+		some amount of time.
+	\item Malicious attackers can exploit the caching behavior of local
+		network DNS servers to point users towards a phony website
+		which is designed with hostile intent. One such example is:
+		\begin{itemize}
+			\item Lookalike sites built to scrape user credentials
+				before logging them in. (If I were a threat, I
+				would not want my threat discovered quickly. As
+				such, I would do everything I could to hide the
+				existence of my threat.)
+		\end{itemize}
+\end{enumerate}
 
 \end{document}
