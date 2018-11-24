@@ -85,7 +85,7 @@
 \subsection{Poisoning the Cache}
 	Dumping poison in the watering hole, here meaning the DNS server's
 	cache, is very similar to the MitM attack in several ways, but with the
-	following distinctions:
+	following requirements/distinctions:
 	\begin{itemize}
 		\item The DNS server must be someplace such the attacker can
 			insert their response between the local server and
@@ -98,11 +98,65 @@
 			given domain, as long as the cache keeps the spoofed
 			response. This may be minutes, hours, or days. This has
 			an obvious benefit over needing to keep constant watch
-			for requests.
+			for requests after the initial attack.
+			
+			However, unless an attacker has their fingers in the
+			DNS server, they must keep watch until the cache is
+			flushed and a new request is made, which is not
+			necessarily easy to know. Because the response can set
+			the time that a particular domain is kept in the cache,
+			targeted domains which have permanent IP addresses may
+			not be as vulnerable.
 		\item Authority and other domains can also be targeted. An
 			attacker can point the DNS server to their own
 			nameserver elsewhere for the duration that the cache
 			keeps that record.
+	\end{itemize}
+
+	Like the MitM attack, this primarily is effective through use of a tool
+	to listen for and respond to a request quickly enough to be taken as
+	legitimate. However, if the DNS server is not secured properly, manual
+	poisoning can be achieved to great effect, without having to wait for
+	the cache to flush for any given target domain.
+
+\section{Conclusion}
+
+	A more up-close-and-personal kind of attack than typosquatting, and
+	almost certainly more dangerous, and difficult to detect, DNS hijacking
+	is likely to be a vulnerability for any individual or organization,
+	with only a handful of security countermeasures available. Being a
+	more intimate kind of attack, the threat is liable to be significantly
+	lower the smaller the gains. Grabbing someone's reddit credentials, for
+	example, may not help an attacker much, but grabbing their social
+	media, email, or online-banking information is incredibly valuable.
+
+	For individuals, some countermeasures include:
+
+	\begin{itemize}
+		\item Using encrypted tunnels to serve DNS requests, which may
+			be as simple as a VPN.
+		\item {\em Always} checking the browser to see if the
+			legitimate certificate is being served. Certificate
+			Authorities and HTTPS are what make such things as
+			online banking a possibility in the first place;
+			ignoring their importance is not a good idea.
+	\end{itemize}
+
+	For organizations, countermeasures for end-users are as those for
+	individuals. End-users are generally not reliably security-conscious
+	creatures, however, so the procedure the organization can follow
+	includes (off the top of my head):
+
+	\begin{itemize}
+		\item Increasing the Time To Live of known-good records, and
+			watching for inconsistencies in responses. If a
+			response carries a TTL which is not consistent with
+			previous responses for the same domain, flushing sooner
+			may help reduce the attack window.
+		\item Corroborating responses from other, decentralized DNS
+			servers, and randomizing the ports in doing so.
+		\item Following industry-standard security policy, most all of
+			which is unknown to the author.
 	\end{itemize}
 
 \end{document}
