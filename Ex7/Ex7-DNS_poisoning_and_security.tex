@@ -17,8 +17,8 @@
 \maketitle
 
 \section{Domain Name System}
-DNS is a complicated procedure, much of which is outside the scope of this
-report. The basic principle is as such:
+	DNS is a complicated procedure, much of which is outside the scope of
+	this report. The basic principle is as such:
 
 \begin{enumerate}
 	\item Numbers are hard for people to remember, by comparison with
@@ -38,9 +38,9 @@ report. The basic principle is as such:
 		servers every time they need to serve requests; that would be
 		monumentally noisy and slow. Instead, they cache results for
 		some amount of time.
-	\item Malicious attackers can exploit the caching behavior of local
-		network DNS servers to point users towards a phony website
-		which is designed with hostile intent. One such example is:
+	\item Malicious attackers can exploit the DNS protocol to point users
+		towards a phony website which is designed with hostile intent.
+		One such example is:
 		\begin{itemize}
 			\item Lookalike sites built to scrape user credentials
 				before logging them in. (If I were a threat, I
@@ -49,5 +49,33 @@ report. The basic principle is as such:
 				existence of my threat.)
 		\end{itemize}
 \end{enumerate}
+
+\section{Attacks}
+	There are multiple kinds of attacks which can be leveraged on the DNS
+	protocol.  Generally, there are two broad methods, with varying degrees
+	of longevity and effectiveness.
+
+\subsection{Man in the Middle}
+	If the attacker and the victim are on the same LAN, some tools can be
+	used to intercept and spoof a legitimate DNS response. The idea is to
+	act quickly enough that the first DNS response the victim receives is
+	from the attacker.  However, for the attack to work consistently, the
+	tool needs to keep listening for requests that the end-user machine
+	makes. If the latency between the attacker and the victim is too high,
+	and the real DNS responds first, the attack fails. If the attacker
+	never hears the request to begin with, such as if the victim is using
+	an encrypted VPN tunnel: no dice. This kind of attack could work well
+	in situations where there is no locally hosted DNS server, or where
+	latency to the server would be wide enough for the attacker to slip in.
+	A cafe's wifi network, for instance, would probably be prime territory
+	because:
+\begin{itemize}
+	\item There may be many wireless devices (phones, especially) seeking
+		the same websites, and making requests.
+	\item It is unlikely that a cafe would be high-tech enough to have a
+		locally hosted DNS server. The latency between phone ->
+		router -> DNS server and back almost certainly leaves a wide
+		enough opening for an attack.
+\end{itemize}
 
 \end{document}
