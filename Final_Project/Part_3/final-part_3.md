@@ -220,3 +220,12 @@ that's what matters.
 
 How this independent research helps Fullsoft
 ============================================
+
+First thing that comes to mind in how my projects demonstrated here can
+help Fullsoft is in demonstrating how easy it is to configure for
+logging, once one knows how. Many if not most or all of the hardening
+techniques discussed here can be distributed from the group policy as
+set by the domain controller. Techniques like full-disk encryption will
+require more labor by the IT team, but are also not out of reach or
+impractical. The suggestions explored in this document can and should
+all be applied in short order.
