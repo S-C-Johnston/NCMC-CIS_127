@@ -169,7 +169,10 @@ accidentally locked. The easiest solution which comes to mind
 immediately is to set up either private key/passwordless login (fairly
 trivial for Linux boxes with SSH), or some variation on using
 cryptographic keys resulting in very long, borderline impossible to
-guess passwords, and changing those on a regular basis.
+guess passwords, and changing those on a regular basis. Besides
+automated solutions preventing or avoiding this, configuring the server
+to email me when several logon failures are noticed in a short period
+would not be unwise.
 
 Hardening and auditing and towards Fullsoft's goals
 ===================================================
