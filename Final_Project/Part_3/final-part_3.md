@@ -141,6 +141,35 @@ on configuration are both quite random and strong.
 What to do about these events
 -----------------------------
 
+The first case is fairly straightforward. Increasing the size allowed
+for logging will help prevent spammed errors from disrupting the ability
+to audit. The other solutions include reconfiguring the chatty machines.
+They were Macintoshes using the Bonjour service, shouting for friends,
+which is useful in small domains with no DNS server, but not so useful
+in large domains with a properly configured DNS. That's a prime example
+of well-meaning default configurations getting in the way. Another
+example yet is to use regedit, mentioned earlier, to add an exception
+for failures of that kind from those specific IPs. Fixing the
+misconfigured machines is the saner solution in the long run, but almost
+certainly takes more time than just ignoring those logs or increasing
+the log size until that can be achieved.
+
+For the server... that's tricky. Because it was a botnet distributing
+its attempts over many IPs and many different user names, that's
+difficult to guard against without also making it difficult for myself
+to log in. The only obvious solutions are also tricky to execute
+correctly. Configuring the server and firewall rules to only allow in a
+handful of static IPs, such as the static IP that Fullsoft pays for with
+business class internet, prevents botnets like this from outside the
+network from succeeding. It is wishful thinking that such software as
+Fail2Ban would be useful here; since the IPs were so distributed, the
+effect would be limited. Disabling the Admin builtin account would be
+useful, until such a time as a custom admin account is forgotten or
+accidentally locked. The easiest solution which comes to mind
+immediately is to set up either private key/passwordless login (fairly
+trivial for Linux boxes with SSH), or some variation on using
+cryptographic keys resulting in very long, borderline impossible to
+guess passwords, and changing those on a regular basis.
 
 Hardening and auditing and towards Fullsoft's goals
 ===================================================
