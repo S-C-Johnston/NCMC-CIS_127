@@ -85,13 +85,11 @@ events. Microsoft's naming scheme is unfortunate, and it's easy to
 confuse the two. There isn't a significant reason not to use both. In
 short, the difference is:
 
-| Account Logon Events | Logon Events |
-|----------------------+--------------|
-| Logons for which a   | Logon/off    |
-| machine is the       | events on    |
-| authority. DCs are   | any given    |
-| the authority for    | machine.     |
-| domain accounts.     |              |
+|                 Account Logon Events | Logon Events                  |
+|--------------------------------------+-------------------------------|
+|  Logons for which a machine is the   | Logon/off events on any given |
+| authority. DCs are the authority for | machine. Logged locally to    |
+| domain accounts.                     | that machine.                  |
 
 How these are viewed, ultimately, is in the event viewer. I have a
 tendency to type faster than I think on occasion, so it is not unusual
