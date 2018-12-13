@@ -134,11 +134,13 @@ logged, sometimes multiple times a second. The originating IPs were from
 a huge range, and each IP would wait a handful of seconds before
 retrying. This was likely a botnet which happened to spot my server
 online and started hammering away at it. The default login of
-Administrator was the target, but thankfully, Amazon's Administrator
-passwords on configuration are both quite random and strong.
+Administrator was the target, including other guesses like "KATIE",
+"NEWUSER", "TEACHER", etc. Thankfully, Amazon's Administrator passwords
+on configuration are both quite random and strong.
 
 What to do about these events
 -----------------------------
+
 
 Hardening and auditing and towards Fullsoft's goals
 ===================================================
