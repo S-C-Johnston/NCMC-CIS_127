@@ -78,7 +78,20 @@ gpedit, mentioned earlier, comes into play here. This makes it possible
 to log on both the domain controller and the workstation both successful
 and failed logon events. In gpedit, the details can be found in Computer
 Configuration -> Windows Settings -> Security Settings -> Local Policies
--> Audit Policy
+-> Audit Policy.
+
+There are two kinds: "Account Logon" events and "Logon"
+events. Microsoft's naming scheme is unfortunate, and it's easy to
+confuse the two. There isn't a significant reason not to use both. In
+short, the difference is:
+
+| Account Logon Events | Logon Events |
+|----------------------+--------------|
+| Logons for which a   | Logon/off    |
+| machine is the       | events on    |
+| authority. DCs are   | any given    |
+| the authority for    | machine.     |
+| domain accounts.     |              |
 
 Potentially problematic events
 ------------------------------
