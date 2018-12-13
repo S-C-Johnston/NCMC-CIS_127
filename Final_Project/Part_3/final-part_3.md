@@ -114,6 +114,29 @@ any other task categories desired.
 Potentially problematic events
 ------------------------------
 
+I tried this with two machines. On each were different issues. The first
+is a workstation, where I noticed that the allowed log file size was
+quite small. This is a problem because within 30 minutes, enough noise
+was generated in the log files that it pushed other, useful events out
+of the log. In this case, Windows was logging noisy machines on the
+network which were using multicast DNS every second in an attempt to
+find other machines to network with. This was just a handful of misconfigured
+machines doing something mostly harmless, but their sheer volume of
+chatter pushed out the useful logs I rather wanted to keep.
+
+The other was significantly more worrying. I had a cloud-hosted server
+with Windows Server running for several days, which I had forgotten to
+shut down. This was hosted through Amazon Web Services, and for servers
+of that kind, they recycle IP addresses not in use, so what I was seeing
+was not a targeted attack, but likely the result of port sniffing.
+Several hundred, if not several thousand, failed logon attempts were
+logged, sometimes multiple times a second. The originating IPs were from
+a huge range, and each IP would wait a handful of seconds before
+retrying. This was likely a botnet which happened to spot my server
+online and started hammering away at it. The default login of
+Administrator was the target, but thankfully, Amazon's Administrator
+passwords on configuration are both quite random and strong.
+
 What to do about these events
 -----------------------------
 
