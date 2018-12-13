@@ -59,7 +59,17 @@ and check for virus definition or software updates. It will not
 automatically upgrade the software without asking, because this often
 requires a computer restart.
 
+Scans can be initiated manually by pressing the big green Scan button,
+or they can be scheduled. This can be done in the GUI using Scan Options
+-> Manage Scheduled Scans. They can be set for a regular basis and
+enabled.
 
+Logs, as far as I can tell, are not exported to be viewed by Windows
+Event Viewer unless through the use of AVG CloudCare. Otherwise, their
+logs are locally stored in several possible
+[locations](https://support.avg.com/SupportArticleView?l=en&urlname=Log-File-Locations-for-AVG-Products).
+It is not uncommon (though mildly annoying) for antivirus vendors to
+require the use of their own tools to view logs.
 
 Logging and auditing logon events
 ---------------------------------
