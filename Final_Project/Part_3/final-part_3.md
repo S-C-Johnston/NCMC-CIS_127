@@ -32,6 +32,30 @@ at once.
 Antivirus updates and scans
 ---------------------------
 
+AVG is a trusted antivirus company which provides several conveniences
+for administrators. Among those is a management console, a tool which
+requires that machines be on the same domain as the AVG administration
+server. This allows, among other things:
+
+- On-demand and scheduled scans of arbitrarily large groups of machines.
+
+- A centralized destination for warnings about threats found during
+  scans, with the option to respond as appropriate.
+
+- A centralized update and upgrade distribution cycle. Instead of every
+  machine reaching out to AVG for updates or upgrades, the
+administration server does this as needed, and machines on the domain
+can be served virus definition updates and software upgrades remotely.
+
+These things can be done manually on each machine, and for the sake of
+argument I'll explain how, but it is tedious. To check for updates in
+AVG, one would open the AVG application, locate the help/about section,
+and check for virus definition or software updates. It will not
+automatically upgrade the software without asking, because this often
+requires a computer restart.
+
+
+
 Logging and auditing logon events
 ---------------------------------
 
