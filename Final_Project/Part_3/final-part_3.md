@@ -194,10 +194,29 @@ Some hardening operations require support from the DevOps team, in
 particular how proprietary source code is handled. If we use a
 distributed version control system such as git, then such techniques as
 code signing wouldn't be unwarranted. Forbidding the git server from
-serving clone requests from IPs outside our network may be wise.
+serving clone requests from IPs outside our network may be wise. If we
+don't already, acquiring business internet service for telecommuting
+workers wouldn't be unwise, so as to ensure static IP addresses for them
+as well.
 
 Worrying trends and how they affect Fullsoft
 --------------------------------------------
+
+From both a social engineering and a digital security standpoint, social
+media is quite often a dangerous thing. Oversharing information on
+social media can disclose secrets, sensitive details about operations,
+and details about oneself that are used for security purposes. Security
+questions, for instance, should not be used with answer that can be
+found on social media. Two suggestions come to mind:
+
+1. Don't post this information, or don't use security questions which
+   are based on this information. Use custom security questions, rather
+than your mother's maiden name.
+
+2. _LIE!_ Nobody but you should know the answer. Telling the truth makes
+   it easier to remember, sure, but there's no restriction on you lying
+about your first pet or model of car. As long as you can remember it,
+that's what matters.
 
 How this independent research helps Fullsoft
 ============================================
