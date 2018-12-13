@@ -181,7 +181,20 @@ Mentioned in previous reports in the fallout of Fullsoft suffering from
 malware induced data theft, account and access controls are literally
 the least we could do in pursuit of hardening our machines. A principle
 of least-privilege applied to user accounts, and logging events
-generated is a step up from that.
+generated is a step up from that. These and a number of other hardening
+techniques are relatively trivial to implement, without sacrificing much
+in the way of convenience, and providing the IT team more to work with.
+
+We will almost certainly be the target of attacks in the future, whether
+these are random from passerby sniffing for vulnerabilities, or
+targeted. Logging and auditing processes will allow us to understand
+when and how this occurs, and thereby also the frequency.
+
+Some hardening operations require support from the DevOps team, in
+particular how proprietary source code is handled. If we use a
+distributed version control system such as git, then such techniques as
+code signing wouldn't be unwarranted. Forbidding the git server from
+serving clone requests from IPs outside our network may be wise.
 
 Worrying trends and how they affect Fullsoft
 --------------------------------------------
