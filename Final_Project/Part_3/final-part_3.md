@@ -26,9 +26,10 @@ information is encrypted at rest.
 administrators to set logging and auditing policies on an entire domain
 at once.
 
-4. Event viewer -- What it says on the tin; it allows for detailed
-   auditing of the binary log data reported from multiple sources within
-the system.
+4. Event viewer -- What it says on the tin: allows for detailed auditing
+   of the binary log data reported from multiple sources within the
+system. Once auditing policy is set, this is where logon events can be
+checked.
 
 5. Others outside the scope of this document which help to flesh out the
    toolset.
