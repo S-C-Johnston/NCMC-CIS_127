@@ -93,6 +93,24 @@ short, the difference is:
 | the authority for    | machine.     |
 | domain accounts.     |              |
 
+How these are viewed, ultimately, is in the event viewer. I have a
+tendency to type faster than I think on occasion, so it is not unusual
+for me to have two failed logons before a proper success. Using both
+Account Logon and Logon events, a success will likely show as two
+successes, which is fine. These events can be found under Windows Logs
+-> Security.
+
+To filter for only this kind of event, we can handle it in a couple of
+ways. Using "Filter Current Log" or "Create Custom View" on the right
+side, we can filter by event ID number code using the
+[list](https://docs.microsoft.com/en-us/windows/security/threat-protection/auditing/basic-audit-logon-events)
+of [event
+codes](https://docs.microsoft.com/en-us/windows/security/threat-protection/auditing/basic-audit-account-logon-events)
+that Microsoft publishes. To filter by kind, Logon, rather than the
+granular numbered ranges, we need to choose Event Source -> "Microsoft
+Windows security auditing", and _then_ choose Task Category -> Logon, or
+any other task categories desired.
+
 Potentially problematic events
 ------------------------------
 
