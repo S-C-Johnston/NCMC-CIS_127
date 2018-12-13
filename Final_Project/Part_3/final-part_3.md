@@ -74,6 +74,12 @@ require the use of their own tools to view logs.
 Logging and auditing logon events
 ---------------------------------
 
+gpedit, mentioned earlier, comes into play here. This makes it possible
+to log on both the domain controller and the workstation both successful
+and failed logon events. In gpedit, the details can be found in Computer
+Configuration -> Windows Settings -> Security Settings -> Local Policies
+-> Audit Policy
+
 Potentially problematic events
 ------------------------------
 
