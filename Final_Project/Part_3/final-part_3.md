@@ -174,6 +174,12 @@ guess passwords, and changing those on a regular basis.
 Hardening and auditing and towards Fullsoft's goals
 ===================================================
 
+Mentioned in previous reports in the fallout of Fullsoft suffering from
+malware induced data theft, account and access controls are literally
+the least we could do in pursuit of hardening our machines. A principle
+of least-privilege applied to user accounts, and logging events
+generated is a step up from that.
+
 Worrying trends and how they affect Fullsoft
 --------------------------------------------
 
