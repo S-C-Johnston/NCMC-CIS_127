@@ -1,0 +1,45 @@
+%&tex
+\documentclass{article}
+
+\usepackage{listings}
+\usepackage{geometry}
+
+\title{Exercise 5 -- Commandline Kung Fu}
+\author{Stewart Johnston\\
+  {CIS 127 -- Intro to Information Security}\\
+  {NCMC}\\
+  {\texttt{johnstons1@student.ncmich.edu}}
+}
+\date{\today}
+
+\begin{document}
+
+\lstset{
+	basicstyle=\ttfamily,
+	language=bash,
+	alsolanguage=awk}
+
+\maketitle
+
+\section{grep-ing}
+Looking for domain controllers and webservers from nmap's greppable output.
+
+\lstinputlisting[float=h]{CommandLineKungFu/files/challenge_1.bsh}
+
+Results: \lstinputlisting[float=h]{CommandLineKungFu/files/nmap_search.out}
+
+\section{grep-ing part 2}
+Grabbing credit card data out of what looks like gobbledy-gook.
+
+\lstinputlisting[float=h]{CommandLineKungFu/files/challenge_2.bsh}
+
+Results: \lstinputlisting=[float=h]{CommandLineKungFu/files/CCNumbers.txt}
+
+\section{Stream editing}
+Replacing SSNs with x's, and filtering on first names.
+
+\lstinputlisting[float=h]{CommandLineKungFu/files/challenge_3.bsh}
+
+Results: too many to show. It's a big file.
+
+\end{document}
