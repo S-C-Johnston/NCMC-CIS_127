@@ -9,5 +9,9 @@ pdfs to which I do not have copyright, such as NIST standards, etc. All
 material in this repository should consist of my original notes, pdfs, scripts,
 etc.
 
+I've also omitted supporting files like pcapng and so on from lab work, which
+is not ultimately necessary. Wireshark was used in the context of those labs to
+generate necessary data.
+
 This is all source-viewable, both in part as a reference resource and as a
 portfolio entry, but I reserve copyright.
